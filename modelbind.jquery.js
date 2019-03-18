@@ -74,12 +74,14 @@
     this.updateForm = function () {
       $.each(MODEL, function(k,v){
         var $elem = $(context).find("["+CONFIG.bindAttribute+"="+k+"]");
-        var tName = $elem.get(0).tagName;
-        if(["INPUT", "SELECT", "TEXTAREA"].includes(tName)) { 
-          $elem.val(v);
-        } else {
-          $elem.text(v);
-        }
+        if($elem.length > 0) {
+          var tName = $elem.get(0).tagName;
+          if(["INPUT", "SELECT", "TEXTAREA"].includes(tName)) { 
+            $elem.val(v);
+          } else {
+            $elem.text(v);
+          }
+        } 
       });
     };
 
